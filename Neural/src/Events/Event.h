@@ -45,7 +45,7 @@ namespace Neural {
 				return getCategoryFlags() & category;
 			}
 
-		protected:
+		public:
 			bool c_handled = false;
 
 		};

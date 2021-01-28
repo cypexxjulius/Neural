@@ -110,14 +110,17 @@ project "Neural"
 
 	filter "configurations:Debug"
 		defines "NL_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NL_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NL_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
