@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Neural/vendor/GLFW/include"
+IncludeDirs["Glad"] = "Neural/vendor/Glad/include"
 
 include "Neural/vendor/GLFW"
+include "Neural/vendor/Glad"
 
 project "Sandbox"
 	location "Sandbox"
@@ -82,12 +84,14 @@ project "Neural"
 	{ 
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDirs.GLFW}"
+		"%{IncludeDirs.GLFW}",
+		"%{IncludeDirs.Glad}"
 	}
 	
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 	
@@ -100,6 +104,7 @@ project "Neural"
 		{
 			"NL_PLATFORM_WINDOWS",
 			"NL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE",
 			"NL_ENABLE_ASSERTS"
 		}
 

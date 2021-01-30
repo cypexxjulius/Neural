@@ -1,10 +1,11 @@
 #include "nlpch.h"
 #include "WindowsWindow.h"
-
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 
+
+#include <glad/glad.h>
 
 namespace Neural 
 {
@@ -35,6 +36,7 @@ namespace Neural
 		c_data.s_title = props.s_title;
 		c_data.s_width = props.s_width;
 		c_data.s_height = props.s_height;
+
 		NL_CORE_INFO("Creating window {0} ({1}, {2})", props.s_title, props.s_width, props.s_height);
 		if(!i_GLFWInitialized)
 		{
@@ -47,6 +49,10 @@ namespace Neural
 		}
 		c_window = glfwCreateWindow((int)props.s_width, (int)props.s_height, props.s_title, nullptr, nullptr);
 		glfwMakeContextCurrent(c_window);
+		
+		int status = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+		NL_CORE_ASSERT(status, "Failed to initialize Glad");
+
 		glfwSetWindowUserPointer(c_window, &c_data);
 		setVSync(true);
 

@@ -1,6 +1,7 @@
 #include "nlpch.h"
 #include "Application.h"
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Neural {
 
@@ -27,7 +28,6 @@ namespace Neural {
 	void Application::onEvent(Event& event) {
 		EventDispatcher dispatcher(event);
 		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::onWindowClose));
-		NL_CORE_TRACE("{0}", event);
 
 		for (auto i = c_LayerStack.end(); i != c_LayerStack.begin();)
 		{

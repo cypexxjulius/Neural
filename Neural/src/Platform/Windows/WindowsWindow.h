@@ -19,8 +19,7 @@ namespace  Neural {
 		inline unsigned int getHeight() const override { return c_data.s_height;  }
 
 
-		// Window attributes
-
+		// Window attribute
 		inline void setEventCallback(const EventCallbackFunction& callback) override { c_data.s_eventCallback= callback;  }
 		void setVSync(bool enabled) override;
 		bool isVSync() const override;
