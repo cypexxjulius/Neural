@@ -24,6 +24,7 @@ public:
 	Engine()
 	{
 		pushLayer(new ExampleLayer());
+		pushOverlay(new Neural::ImGuiLayer());
 	}
 
 	~Engine(){}

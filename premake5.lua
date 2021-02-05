@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDirs = {}
 IncludeDirs["GLFW"] = "Neural/vendor/GLFW/include"
 IncludeDirs["Glad"] = "Neural/vendor/Glad/include"
+IncludeDirs["ImGui"] = "Neural/vendor/imgui"
 
 include "Neural/vendor/GLFW"
 include "Neural/vendor/Glad"
+include "Neural/vendor/imgui"
 
 project "Sandbox"
 	location "Sandbox"
@@ -85,13 +87,15 @@ project "Neural"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
-		"%{IncludeDirs.Glad}"
+		"%{IncludeDirs.Glad}",
+		"%{IncludeDirs.ImGui}"
 	}
 	
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 	

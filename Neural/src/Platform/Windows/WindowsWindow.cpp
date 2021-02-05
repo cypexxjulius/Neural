@@ -102,6 +102,14 @@ namespace Neural
 				}
 		});
 
+		glfwSetCharCallback(c_window, [](GLFWwindow* window, unsigned int keycode)
+		{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
+				data.s_eventCallback(event);
+
+		});
+
 		glfwSetMouseButtonCallback(c_window, [](GLFWwindow* window, int button, int action, int mods)
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

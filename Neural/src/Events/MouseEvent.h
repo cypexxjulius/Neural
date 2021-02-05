@@ -10,6 +10,9 @@ namespace Neural
 	public:
 		MouseMovedEvent(float x, float y)
 			: c_mouseX(x), c_mouseY(y) {}
+
+		inline float getX() const { return c_mouseX; }
+		inline float getY() const { return c_mouseY; }
 		
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)

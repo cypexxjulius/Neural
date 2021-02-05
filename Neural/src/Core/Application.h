@@ -20,12 +20,16 @@ namespace Neural {
 		void pushLayer(Layer* layer);
 		void pushOverlay(Layer* layer);
 
+		inline static Application& get() { return *s_instance; };
+		inline Window& getWindow() { return *c_window; };
 	private:
 		bool onWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> c_window;
 		bool c_isRunning = true;
 		LayerStack c_LayerStack;
+	private:
+		static Application* s_instance;
 	};
 	
 	Application* CreateApplication();

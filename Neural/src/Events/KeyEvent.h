@@ -12,7 +12,7 @@ namespace Neural {
 		: public Event {
 
 	public:
-		inline int GetKeyCode() const {
+		inline int getKeyCode() const {
 			return c_keyCode;
 		}
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
@@ -36,6 +36,7 @@ namespace Neural {
 
 		EVENT_CLASS_TYPE(KeyPressed)
 	};
+
 	class NEURAL_API KeyReleasedEvent : public KeyEvent 
 	{
 	public:
@@ -43,5 +44,14 @@ namespace Neural {
 			: KeyEvent(keycode) {}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+	class NEURAL_API KeyTypedEvent
+		: public KeyEvent {
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }

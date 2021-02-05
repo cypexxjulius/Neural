@@ -8,7 +8,7 @@ namespace Neural {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 	
@@ -64,13 +64,9 @@ namespace Neural {
 			EventDispatcher(Event& event)
 				: c_Event(event) {}
 
-			template <typename T>
+			template<typename T> 
 			bool dispatch(EventFn<T> func) 
 			{
-				/*
-				* Check's if the event has already been triggered
-				* if so, the function is getting called
-				*/
 				if (c_Event.getEventType() == T::getStaticType()) 
 				{
 					c_Event.c_handled = func(*(T*)&c_Event);

@@ -7,6 +7,9 @@
     <Filter Include="Events">
       <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Logging">
       <UniqueIdentifier>{AC6878E8-1848-F783-2160-825A8DBE5DE5}</UniqueIdentifier>
     </Filter>
@@ -48,6 +51,9 @@
     <ClInclude Include="src\Events\MouseEvent.h">
       <Filter>Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\ImGui\ImGuiLayer.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Logging\Logging.h">
       <Filter>Logging</Filter>
     </ClInclude>
@@ -56,6 +62,7 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\nlpch.h" />
+    <ClInclude Include="src\Platform\Opengl\ImGuiOpenGlRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -67,6 +74,9 @@
     <ClCompile Include="src\Core\LayerStack.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Logging\Logging.cpp">
       <Filter>Logging</Filter>
     </ClCompile>
@@ -74,5 +84,6 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\nlpch.cpp" />
+    <ClCompile Include="src\Platform\Opengl\ImGuiOpenGlRenderer.cpp" />
   </ItemGroup>
 </Project>
