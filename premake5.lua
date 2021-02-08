@@ -1,7 +1,10 @@
 workspace "Neural"
 	architecture "x64"
 
-	configurations {
+	startproject "Sandbox"
+	
+	configurations 
+	{
 		"Debug",
 		"Release",
 		"Dist"
@@ -15,6 +18,8 @@ IncludeDirs = {}
 IncludeDirs["GLFW"] = "Neural/vendor/GLFW/include"
 IncludeDirs["Glad"] = "Neural/vendor/Glad/include"
 IncludeDirs["ImGui"] = "Neural/vendor/imgui"
+IncludeDirs["glm"] = "Neural/vendor/glm"
+
 
 include "Neural/vendor/GLFW"
 include "Neural/vendor/Glad"
@@ -34,6 +39,7 @@ project "Sandbox"
 
 	includedirs { 
 		"Neural/vendor/spdlog/include",
+		"%{IncludeDirs.glm}",
 		"Neural/src"	
 	}
 	
@@ -88,7 +94,9 @@ project "Neural"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
-		"%{IncludeDirs.ImGui}"
+		"%{IncludeDirs.ImGui}",
+		"%{IncludeDirs.glm}"
+
 	}
 	
 	links

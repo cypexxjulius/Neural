@@ -23,9 +23,16 @@ namespace  Neural {
 		inline void setEventCallback(const EventCallbackFunction& callback) override { c_data.s_eventCallback= callback;  }
 		void setVSync(bool enabled) override;
 		bool isVSync() const override;
+
+		inline virtual void* getNativeWindow() const
+		{
+			return c_window;
+		}
 	private:
 		virtual void init(const WindowProps& props);
 		virtual void shutdown();
+
+
 	private:
 		GLFWwindow* c_window;
 		struct WindowData 

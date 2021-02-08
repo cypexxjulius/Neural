@@ -11,27 +11,14 @@ namespace Neural {
 	{
 	public:
 		ImGuiLayer();
-
 		~ImGuiLayer();
 
-		void onUpdate();
+		virtual void onAttach() override;
+		virtual void onDetach() override;
+		virtual void onUpdate() override;
 
-		void onEvent(Event& event);
-
-		void onAttach();
-		void onDetach();
-	private:
-		bool onMouseButtonPressed(MouseButtonPressedEvent& event);
-		bool onMouseButtonReleased(MouseButtonReleasedEvent& event);
-		bool onMouseScrolled(MouseScrolledEvent& event);
-		bool onMouseMoved(MouseMovedEvent& event);
-	
-		bool onKeyTyped(KeyTypedEvent& event);
-
-		bool onKeyPressed(KeyPressedEvent& event);
-		bool onKeyReleased(KeyReleasedEvent& event);
-		bool onWindowResize(WindowResizeEvent& event);
-
+		void begin();
+		void end();
 
 	private:
 		float c_time = 0.0f;

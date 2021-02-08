@@ -8,11 +8,11 @@ public:
 
 	void onUpdate() override
 	{
-		NL_INFO("ExampleLayer::Update");
+		if (Neural::Input::isKeyPressed(NL_KEY_TAB))
+			NL_INFO("Tab Pressed");
 	}
 	void onEvent(Neural::Event& event) override
 	{
-		NL_TRACE("{0}", event);
 	}
 
 };
