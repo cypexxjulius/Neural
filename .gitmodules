@@ -7,3 +7,6 @@
 [submodule "Neural/vendor/imgui"]
 	path = Neural/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Neural/vendor/glm"]
+	path = Neural/vendor/glm
+	url = https://github.com/g-truc/glm
