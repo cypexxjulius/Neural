@@ -5,6 +5,7 @@
 #include "Core/LayerStack.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Neural {
 	class NEURAL_API Application {
@@ -26,6 +27,8 @@ namespace Neural {
 		bool onWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> c_window;
+		ImGuiLayer* c_ImGuiLayer;
+
 		bool c_isRunning = true;
 		LayerStack c_LayerStack;
 	private:

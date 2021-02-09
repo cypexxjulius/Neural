@@ -13,9 +13,9 @@ namespace Neural {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		virtual void onAttach() override;
-		virtual void onDetach() override;
-		virtual void onUpdate() override;
+		virtual void onAttach();
+		virtual void onDetach();
+		virtual void onImGuiRender() override;
 
 		void begin();
 		void end();

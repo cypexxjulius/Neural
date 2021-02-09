@@ -1,11 +1,10 @@
 #include "nlpch.h"
-#include "LayerStack.h"
+#include "Core/LayerStack.h"
 
 namespace Neural 
 {
 	LayerStack::LayerStack()
 	{
-		c_layerInsert = c_layers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -16,7 +15,8 @@ namespace Neural
 
 	void LayerStack::pushLayer(Layer* layer)
 	{
-		c_layerInsert = c_layers.emplace(c_layerInsert, layer);
+		c_layers.emplace(c_layers.begin() + c_layerInsertIndex, layer);
+		c_layerInsertIndex++;
 	}
 
 	void LayerStack::pushOverlay(Layer* overlay)
@@ -30,7 +30,7 @@ namespace Neural
 		if(it != c_layers.end())
 		{
 			c_layers.erase(it);
-			c_layerInsert--;
+			c_layerInsertIndex--;
 		}
 	}
 

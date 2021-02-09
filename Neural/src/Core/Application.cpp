@@ -9,10 +9,15 @@ namespace Neural {
 
 	Application::Application() 
 	{
-		NL_ASSERT(!s_instance, "Application Created a second time");
+		NL_ASSERT(!s_instance, "Application already exists!");
+		s_instance = this;
+
 		c_window = std::unique_ptr<Window>(Window::create());
 		c_window->setEventCallback(NL_BIND_EVENT_FUNC(Application::onEvent));
-		s_instance = this;
+	
+		c_ImGuiLayer = new ImGuiLayer;
+
+		pushOverlay(c_ImGuiLayer);
 	}
 	Application::~Application() {
 
@@ -49,6 +54,14 @@ namespace Neural {
 
 			for (Layer* layer : c_LayerStack)
 				layer->onUpdate();
+
+			c_ImGuiLayer->begin();
+
+			for (Layer* layer : c_LayerStack)
+				layer->onImGuiRender();
+
+			c_ImGuiLayer->end();
+
 
 			c_window->onUpdate();
 		}

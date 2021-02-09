@@ -24,33 +24,6 @@ namespace Neural {
 	{
 
 	}
-	void ImGuiLayer::onUpdate()
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		Application& app = Application::get();
-		io.DisplaySize = ImVec2(app.getWindow().getWidth(), app.getWindow().getHeight());
-
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui::NewFrame();
-		
-		float time = (float)glfwGetTime();
-		io.DeltaTime = time > 0.0 ? (time - c_time) : (1.0f / 60.0f);
-		c_time = time;
-
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
-
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	}
-
-	void ImGuiLayer::begin()
-	{
-	}
-
-	void ImGuiLayer::end()
-	{
-	}
 
 	void ImGuiLayer::onAttach()
 	{
@@ -96,5 +69,41 @@ namespace Neural {
 	}
 	void ImGuiLayer::onDetach()
 	{
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
+	}
+
+	void ImGuiLayer::begin()
+	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+	}
+
+
+	void ImGuiLayer::end()
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		Window& window = Application::get().getWindow();
+
+		io.DisplaySize = ImVec2(window.getWidth(), window.getHeight());
+		
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			glfwMakeContextCurrent(backup_current_context);
+		}
+
+	}
+	void ImGuiLayer::onImGuiRender()
+	{
+		static bool show = true;
+		ImGui::ShowDemoWindow(&show);
 	}
 }

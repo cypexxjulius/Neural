@@ -24,7 +24,7 @@ namespace Neural
 		std::vector<Layer*>::iterator end() { return c_layers.end(); }
 	private:
 		std::vector<Layer*> c_layers;
-		std::vector<Layer*>::iterator c_layerInsert;
+		unsigned int c_layerInsertIndex = 0;
 	};
 
 }

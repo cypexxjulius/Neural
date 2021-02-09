@@ -13,4 +13,5 @@ namespace Neural
 	void Layer::onDetach() {}
 	void Layer::onUpdate() {}
 	void Layer::onEvent(Event& event) {}
+	void Layer::onImGuiRender() {}
 }
