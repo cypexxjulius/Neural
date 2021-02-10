@@ -25,53 +25,12 @@ include "Neural/vendor/GLFW"
 include "Neural/vendor/Glad"
 include "Neural/vendor/imgui"
 
-project "Sandbox"
-	location "Sandbox"
-	kind "ConsoleApp"
-	language "C++"
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("binInt/" .. outputdir .. "/%{prj.name}")
-
-	files{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
-
-	includedirs { 
-		"Neural/vendor/spdlog/include",
-		"%{IncludeDirs.glm}",
-		"Neural/src"	
-	}
-	
-	links{
-		"Neural"
-	}
-	
-	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
-
-		defines {
-			"NL_PLATFORM_WINDOWS",
-		}
-
-	filter "configurations:Debug"
-		defines "NL_DEBUG"
-		symbols "On"
-
-	filter "configurations:Release"
-		defines "NL_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "NL_DIST"
-		optimize "On"
-
 project "Neural"
 	location "Neural"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("binInt/" .. outputdir .. "/%{prj.name}")
@@ -108,8 +67,6 @@ project "Neural"
 	}
 	
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines 
@@ -117,27 +74,74 @@ project "Neural"
 			"NL_PLATFORM_WINDOWS",
 			"NL_BUILD_DLL",
 			"GLFW_INCLUDE_NONE",
-			"NL_ENABLE_ASSERTS"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			"NL_ENABLE_ASSERTS",
+			"_CRT_SECURE_NO_WARNINGS"
 		}
 
 	filter "configurations:Debug"
 		defines "NL_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "NL_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "NL_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 
+
+		
+project "Sandbox"
+	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("binInt/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs 
+	{ 
+		"Neural/vendor/spdlog/include",
+		"%{IncludeDirs.glm}",
+		"Neural/src"	
+	}
+	
+	links
+	{
+		"Neural"
+	}
+	
+	filter "system:windows"
+		systemversion "latest"
+
+		defines {
+			"NL_PLATFORM_WINDOWS",
+		}
+
+	filter "configurations:Debug"
+		defines "NL_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "NL_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "NL_DIST"
+		runtime "Release"
+		optimize "on"

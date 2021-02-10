@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 namespace Neural {
-	class NEURAL_API Logging {
+	class Logging {
 	private:
 		static std::shared_ptr<spdlog::logger> c_CoreLogger;
 		static std::shared_ptr<spdlog::logger> c_ClientLogger;

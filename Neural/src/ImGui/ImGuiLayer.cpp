@@ -87,7 +87,7 @@ namespace Neural {
 		ImGuiIO& io = ImGui::GetIO();
 		Window& window = Application::get().getWindow();
 
-		io.DisplaySize = ImVec2(window.getWidth(), window.getHeight());
+		io.DisplaySize = ImVec2((float)window.getWidth(), (float)window.getHeight());
 		
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

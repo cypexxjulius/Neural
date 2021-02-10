@@ -2,12 +2,15 @@
 
 
 #ifdef NL_PLATFORM_WINDOWS
-
-	#ifdef NL_BUILD_DLL
-		#define NEURAL_API __declspec(dllexport)
-	#else 
-		#define NEURAL_API __declspec(dllimport)
-	#endif //NL_BUILD_DLL
+	#ifdef NL_NEURAL_LINK
+		#ifdef NL_BUILD_DLL
+			#define NEURAL_API __declspec(dllexport)
+		#else 
+			#define NEURAL_API __declspec(dllimport)
+		#endif //NL_BUILD_DLL
+	#else
+		#define NEURAL_API 
+	#endif
 #else 
 	#error Neural only supports Windows
 #endif //NL_PLATFORM_WINDOWS
