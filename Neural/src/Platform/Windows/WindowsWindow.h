@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Core/Window.h"
+#include "Platform/Opengl/OpenGLContext.h"
+#include "Neural/Core/Window.h"
 
 #include <GLFW/glfw3.h>
 
@@ -44,6 +45,7 @@ namespace  Neural {
 		};
 	private:
 		WindowData c_data;
+		GraphicsContext* c_context;
 	};
 
 }

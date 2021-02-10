@@ -4,18 +4,18 @@
 /*
 Only include in not Neural Projects
 */
-#include "Core/Application.h"
-#include "Core/Core.h"
-#include "Logging/Logging.h"
-#include "Core/Layer.h"
-#include "ImGui/ImGuiLayer.h"
-#include "Core/Input.h"
+#include "Neural/Core/Application.h"
+#include "Neural/Core/Core.h"
+#include "Neural/Logging/Logging.h"
+#include "Neural/Core/Layer.h"
+#include "Neural/ImGui/ImGuiLayer.h"
+#include "Neural/Core/Input.h"
 
 
 // Keycodes
-#include "Events/Keycode.h"
-#include "Events/MouseButtonCodes.h"
+#include "Neural/Events/Keycode.h"
+#include "Neural/Events/MouseButtonCodes.h"
 
 // -- Entry Point
 
-#include "Core/EntryPoint.h"
+#include "Neural/Core/EntryPoint.h"

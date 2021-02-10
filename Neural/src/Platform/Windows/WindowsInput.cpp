@@ -1,6 +1,6 @@
 #include "nlpch.h"
 #include "WindowsInput.h"
-#include "Core/Application.h"
+#include "Neural/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 

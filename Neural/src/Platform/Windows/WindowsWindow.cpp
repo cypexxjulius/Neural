@@ -1,11 +1,9 @@
 #include "nlpch.h"
 #include "WindowsWindow.h"
-#include "Events/ApplicationEvent.h"
-#include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h"
 
-
-#include <glad/glad.h>
+#include "Neural/Events/ApplicationEvent.h"
+#include "Neural/Events/MouseEvent.h"
+#include "Neural/Events/KeyEvent.h"
 
 namespace Neural 
 {
@@ -37,6 +35,7 @@ namespace Neural
 		c_data.s_width = props.s_width;
 		c_data.s_height = props.s_height;
 
+
 		NL_CORE_INFO("Creating window {0} ({1}, {2})", props.s_title, props.s_width, props.s_height);
 		if(!i_GLFWInitialized)
 		{
@@ -48,10 +47,10 @@ namespace Neural
 			i_GLFWInitialized = true;
 		}
 		c_window = glfwCreateWindow((int)props.s_width, (int)props.s_height, props.s_title, nullptr, nullptr);
-		glfwMakeContextCurrent(c_window);
 		
-		int status = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-		NL_CORE_ASSERT(status, "Failed to initialize Glad");
+		c_context = new OpenGLContext(c_window);
+		c_context->init();
+	
 
 		glfwSetWindowUserPointer(c_window, &c_data);
 		setVSync(true);
@@ -153,7 +152,7 @@ namespace Neural
 	void WindowsWindow:: onUpdate() 
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(c_window);
+		c_context->swapBuffers();
 	}
 
 	void WindowsWindow::setVSync(bool enabled) {

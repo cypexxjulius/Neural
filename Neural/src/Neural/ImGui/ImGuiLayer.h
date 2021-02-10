@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Core/Layer.h"
-#include "Events/ApplicationEvent.h"
-#include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h"
+#include "Neural/Core/Layer.h"
+#include "Neural/Events/ApplicationEvent.h"
+#include "Neural/Events/KeyEvent.h"
+#include "Neural/Events/MouseEvent.h"
 
 namespace Neural {
 

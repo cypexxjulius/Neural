@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Logging/Logging.h"
+#include "Neural/Logging/Logging.h"
 
 #ifdef NL_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -140,33 +140,36 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Application.h" />
-    <ClInclude Include="src\Core\Core.h" />
-    <ClInclude Include="src\Core\EntryPoint.h" />
-    <ClInclude Include="src\Core\Input.h" />
-    <ClInclude Include="src\Core\Layer.h" />
-    <ClInclude Include="src\Core\LayerStack.h" />
-    <ClInclude Include="src\Core\Window.h" />
-    <ClInclude Include="src\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Events\Event.h" />
-    <ClInclude Include="src\Events\KeyEvent.h" />
-    <ClInclude Include="src\Events\Keycode.h" />
-    <ClInclude Include="src\Events\MouseButtonCodes.h" />
-    <ClInclude Include="src\Events\MouseEvent.h" />
-    <ClInclude Include="src\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Logging\Logging.h" />
+    <ClInclude Include="src\Platform\Opengl\OpenGLContext.h" />
+    <ClInclude Include="src\Neural\Core\Application.h" />
+    <ClInclude Include="src\Neural\Core\Core.h" />
+    <ClInclude Include="src\Neural\Core\EntryPoint.h" />
+    <ClInclude Include="src\Neural\Core\Input.h" />
+    <ClInclude Include="src\Neural\Core\Layer.h" />
+    <ClInclude Include="src\Neural\Core\LayerStack.h" />
+    <ClInclude Include="src\Neural\Core\Window.h" />
+    <ClInclude Include="src\Neural\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Neural\Events\Event.h" />
+    <ClInclude Include="src\Neural\Events\KeyEvent.h" />
+    <ClInclude Include="src\Neural\Events\Keycode.h" />
+    <ClInclude Include="src\Neural\Events\MouseButtonCodes.h" />
+    <ClInclude Include="src\Neural\Events\MouseEvent.h" />
+    <ClInclude Include="src\Neural\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Neural\Logging\Logging.h" />
     <ClInclude Include="src\Neural.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\nlpch.h" />
+    <ClInclude Include="src\Neural\Renderer\GraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Application.cpp" />
-    <ClCompile Include="src\Core\Layer.cpp" />
-    <ClCompile Include="src\Core\LayerStack.cpp" />
-    <ClCompile Include="src\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Logging\Logging.cpp" />
+    <ClCompile Include="src\Platform\Opengl\OpenGLContext.cpp" />
+    <ClCompile Include="src\Neural\Core\Application.cpp" />
+    <ClCompile Include="src\Neural\Core\Layer.cpp" />
+    <ClCompile Include="src\Neural\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Neural\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Neural\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Neural\Logging\Logging.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\nlpch.cpp">

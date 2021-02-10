@@ -21,77 +21,80 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Application.h">
+    <ClInclude Include="src\Neural.h" />
+    <ClInclude Include="src\nlpch.h" />
+    <ClInclude Include="src\Neural\Core\Application.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Core.h">
+    <ClInclude Include="src\Neural\Core\Core.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\EntryPoint.h">
+    <ClInclude Include="src\Neural\Core\EntryPoint.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Input.h">
+    <ClInclude Include="src\Neural\Core\Input.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Layer.h">
+    <ClInclude Include="src\Neural\Core\Layer.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\LayerStack.h">
+    <ClInclude Include="src\Neural\Core\LayerStack.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Window.h">
+    <ClInclude Include="src\Neural\Core\Window.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Events\ApplicationEvent.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\Event.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\KeyEvent.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\Keycode.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\MouseButtonCodes.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\MouseEvent.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ImGui\ImGuiLayer.h">
+    <ClInclude Include="src\Neural\ImGui\ImGuiLayer.h">
       <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Logging\Logging.h">
+    <ClInclude Include="src\Neural\Events\ApplicationEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\Keycode.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\KeyEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\MouseButtonCodes.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\MouseEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Logging\Logging.h">
       <Filter>Logging</Filter>
     </ClInclude>
-    <ClInclude Include="src\Neural.h" />
+    <ClInclude Include="src\Neural\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\nlpch.h" />
+    <ClInclude Include="src\Platform\Opengl\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Application.cpp">
+    <ClCompile Include="src\nlpch.cpp" />
+    <ClCompile Include="src\Neural\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Layer.cpp">
+    <ClCompile Include="src\Neural\Core\Layer.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\LayerStack.cpp">
+    <ClCompile Include="src\Neural\Core\LayerStack.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImGui\ImGuiBuild.cpp">
+    <ClCompile Include="src\Neural\ImGui\ImGuiBuild.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
+    <ClCompile Include="src\Neural\ImGui\ImGuiLayer.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Logging\Logging.cpp">
+    <ClCompile Include="src\Neural\Logging\Logging.cpp">
       <Filter>Logging</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -100,6 +103,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\nlpch.cpp" />
+    <ClCompile Include="src\Platform\Opengl\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

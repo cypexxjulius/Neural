@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Core.h"
+#include "Neural/Core/Core.h"
 
 namespace Neural {
 

@@ -1,9 +1,9 @@
 #pragma once
-#include "Events/Event.h"
+#include "Neural/Events/Event.h"
 
 namespace Neural
 {
-	class NEURAL_API Layer
+	class Layer
 	{	
 	public:
 		Layer(const char* debugName);

@@ -1,5 +1,5 @@
 #include "nlpch.h"
-#include "Core/LayerStack.h"
+#include "Neural/Core/LayerStack.h"
 
 namespace Neural 
 {

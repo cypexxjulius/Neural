@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Input.h"
+#include "Neural/Core/Input.h"
 
 namespace Neural
 {

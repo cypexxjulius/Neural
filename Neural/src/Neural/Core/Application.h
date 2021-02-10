@@ -2,10 +2,10 @@
 
 #include "Core.h"
 #include "Window.h"
-#include "Core/LayerStack.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
-#include "ImGui/ImGuiLayer.h"
+#include "Neural/Core/LayerStack.h"
+#include "Neural/Events/Event.h"
+#include "Neural/Events/ApplicationEvent.h"
+#include "Neural/ImGui/ImGuiLayer.h"
 
 namespace Neural {
 	class NEURAL_API Application {

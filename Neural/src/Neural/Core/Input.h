@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Core.h"
+#include "Neural/Core/Core.h"
 
 namespace Neural {
 
@@ -9,7 +9,7 @@ namespace Neural {
 		float x, y;
 	};
 
-	class NEURAL_API Input
+	class Input
 	{
 	public:
 		inline static bool isKeyPressed(int keycode) { return c_Instance->isKeyPressedImpl(keycode); }

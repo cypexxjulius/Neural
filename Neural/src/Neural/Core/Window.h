@@ -2,8 +2,8 @@
 
 #include "nlpch.h"
 
-#include "Core/Core.h"
-#include "Events/Event.h"
+#include "Neural/Core/Core.h"
+#include "Neural/Events/Event.h"
 
 
 namespace Neural {
@@ -21,7 +21,7 @@ namespace Neural {
 		}
 	};
 
-	class NEURAL_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFunction = std::function<void(Event&)>;
