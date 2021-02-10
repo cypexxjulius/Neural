@@ -6,9 +6,11 @@
 #include "Neural/Events/Event.h"
 #include "Neural/Events/ApplicationEvent.h"
 #include "Neural/ImGui/ImGuiLayer.h"
+#include "Neural/Renderer/Shader.h"
+#include "Neural/Renderer/Buffer.h"
 
 namespace Neural {
-	class NEURAL_API Application {
+	class Application {
 	public:
 		Application();
 
@@ -33,6 +35,12 @@ namespace Neural {
 		LayerStack c_LayerStack;
 	private:
 		static Application* s_instance;
+
+
+		unsigned int c_vertexArray;
+		std::unique_ptr<Shader> c_shader;
+		std::unique_ptr<VertexBuffer> c_vertexBuffer;
+		std::unique_ptr<IndexBuffer> c_indexBuffer;
 	};
 	
 	Application* CreateApplication();

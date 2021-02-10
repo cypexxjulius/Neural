@@ -2,7 +2,7 @@
 #include "OpenGLContext.h"
 
 #include <glad/glad.h>
-
+ 
 #include <GLFW/glfw3.h>
 
 namespace Neural 
@@ -17,7 +17,14 @@ namespace Neural
 		glfwMakeContextCurrent(c_windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NL_CORE_ASSERT(status, "Failed to initialize Glad!");
-	}
+		
+
+		// Printing system information
+		NL_CORE_INFO("OpenGL Info");
+		NL_CORE_INFO("	Vendor:		{0}", glGetString(GL_VENDOR));
+		NL_CORE_INFO("	Renderer:	{0}", glGetString(GL_RENDERER));
+		NL_CORE_INFO("	Version:	{0}", glGetString(GL_VERSION));
+	}	
 	void OpenGLContext::swapBuffers()
 	{
 		glfwSwapBuffers(c_windowHandle);
