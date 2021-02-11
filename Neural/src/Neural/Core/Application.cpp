@@ -8,6 +8,30 @@ namespace Neural {
 
 	Application* Application::s_instance = nullptr;
 
+	static GLenum shaderDataTypeToOpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+			case ShaderDataType::Float:  return GL_FLOAT;
+			case ShaderDataType::Float2: return GL_FLOAT;
+			case ShaderDataType::Float3: return GL_FLOAT;
+			case ShaderDataType::Float4: return GL_FLOAT;
+
+			case ShaderDataType::Mat3: return GL_FLOAT;
+			case ShaderDataType::Mat4: return GL_FLOAT;
+
+			case ShaderDataType::Int:  return GL_INT;
+			case ShaderDataType::Int2: return GL_INT;
+			case ShaderDataType::Int3: return GL_INT;
+			case ShaderDataType::Int4: return GL_INT;
+
+			case ShaderDataType::Bool: return GL_BOOL;
+		}
+
+		NL_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
+
 	Application::Application() 
 	{
 		// Checks if the application already exists
@@ -33,48 +57,72 @@ namespace Neural {
 		
 		// Index Buffer 
 
-		float vertices[3 * 3] =
+		float vertices[3 * 7] =
 		{
-			-0.5f,  -0.5f,  0.0f,
-			 0.5f,   -0.5f, 0.0f,
-			 0.0f,   0.5f,  0.0f
+			-0.5f,  -0.5f,  0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+			 0.5f,   -0.5f, 0.0f, 0.2f, 0.2f, 0.8f, 1.0f,
+			 0.0f,   0.5f,  0.0f, 0.8f, 0.2f, 0.2f, 1.0f
 		};
 
-		uint32_t indices[3] = { 0, 1, 2 };
 
 		c_vertexBuffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
 		
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position"},
+				{ ShaderDataType::Float4, "a_Color"}
+			};
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+			c_vertexBuffer->setLayout(layout);
+		}
 
+		uint32_t index = 0;
+		const auto& layout = c_vertexBuffer->getLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(	index, 
+									element.getComponentCount(), 
+									shaderDataTypeToOpenGLBaseType(element.s_type),
+									element.s_normalized ? GL_TRUE : GL_FALSE, 
+									layout.getStride(), 
+									(const void *)element.s_offset);
+			index++;
+		}
+
+
+		uint32_t indices[3] = { 0, 1, 2 };
 		c_indexBuffer.reset(IndexBuffer::create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 
-		char* vertexSrc = R"(
+		char vertexSrc[] = R"(
 			#version 330 core
 			
-			layout(location = 0) in vec3 a_position;
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 			
-			out vec3 v_position;		
+			out vec3 v_Position;		
+			out vec4 v_Color;
 	
 			void main()
 			{		
-				v_position = a_position;
-				gl_Position = vec4(a_position, 1.0f);
+				v_Position = a_Position;
+				v_Color = a_Color;
+				gl_Position = vec4(a_Position, 1.0f);
 			}
 
 		)";
 
-		char* fragmentSrc = R"(
+		char fragmentSrc[] = R"(
 			#version 330 core
 			
-			layout(location = 0) out vec4 color;
-			in vec3 v_position;
+			layout(location = 0) out vec4 a_Color;
+			in vec3 v_Position;
+			in vec4 v_Color;
 			
 			void main()
 			{		
-				color = vec4(v_position * 0.5 + 0.5, 1.0f);
+				a_Color = v_Color;
 			}
 
 		)";
