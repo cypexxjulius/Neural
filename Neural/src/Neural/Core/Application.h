@@ -3,11 +3,19 @@
 #include "Core.h"
 #include "Window.h"
 #include "Neural/Core/LayerStack.h"
+
+// Events 
 #include "Neural/Events/Event.h"
 #include "Neural/Events/ApplicationEvent.h"
+
+// ImGui
 #include "Neural/ImGui/ImGuiLayer.h"
+
+// Rendering
 #include "Neural/Renderer/Shader.h"
 #include "Neural/Renderer/Buffer.h"
+#include "Neural/Renderer/VertexArray.h"
+
 
 namespace Neural {
 	class Application {
@@ -36,11 +44,11 @@ namespace Neural {
 	private:
 		static Application* s_instance;
 
+		std::shared_ptr<Shader> c_shader;
+		std::shared_ptr<VertexArray> c_vertexArray;
 
-		unsigned int c_vertexArray;
-		std::unique_ptr<Shader> c_shader;
-		std::unique_ptr<VertexBuffer> c_vertexBuffer;
-		std::unique_ptr<IndexBuffer> c_indexBuffer;
+		std::shared_ptr<Shader> c_squareShader;
+		std::shared_ptr<VertexArray> c_squareVA;
 	};
 	
 	Application* CreateApplication();

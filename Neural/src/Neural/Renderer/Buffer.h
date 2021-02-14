@@ -41,7 +41,9 @@ namespace Neural
 		uint32_t s_size;
 		bool s_normalized;
 
-		BufferElement() {}
+		BufferElement()
+			: s_name(nullptr), s_type(ShaderDataType::None), s_offset(0), s_size(0), s_normalized(0)
+		{}
 		
 		BufferElement(ShaderDataType type, const char *name, bool normalized = 0)
 			: s_name(name), s_type(type), s_size(shaderDataTypeSize(type)), s_offset(0), s_normalized(normalized)

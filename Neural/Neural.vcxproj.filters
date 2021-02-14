@@ -80,6 +80,11 @@
     <ClInclude Include="src\Neural\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\Opengl\OpenGLBuffer.h" />
     <ClInclude Include="src\Neural\Renderer\Renderer.h" />
+    <ClInclude Include="src\Neural\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\Opengl\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Neural\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Neural\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\Opengl\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nlpch.cpp" />
@@ -112,5 +117,10 @@
     <ClCompile Include="src\Neural\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Platform\Opengl\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Neural\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Neural\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\Opengl\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Neural\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Neural\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\Opengl\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
