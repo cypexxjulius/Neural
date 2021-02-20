@@ -5,5 +5,5 @@
 
 namespace Neural 
 {
-	RendererAPI* RenderCommand::c_rendererAPI = new OpenGLRendererAPI;
+	RendererAPI* RenderCommand::m_rendererAPI = new OpenGLRendererAPI;
 }

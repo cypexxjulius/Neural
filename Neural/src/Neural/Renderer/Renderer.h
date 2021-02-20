@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RenderCommand.h"
+#include "OrthographicCamera.h"
 
 namespace Neural
 {
@@ -8,7 +9,7 @@ namespace Neural
 	{
 	public:
 
-		static void beginScene(); 
+		static void beginScene(OrthographicCamera& camera); 
 
 		static void endScene();
 

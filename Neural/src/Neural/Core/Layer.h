@@ -17,9 +17,9 @@ namespace Neural
 
 		inline const char* getName() const 
 		{ 
-			return c_debugName;  
+			return m_debugName;  
 		}
 	protected:
-		const char* c_debugName;
+		const char* m_debugName;
 	};
 }

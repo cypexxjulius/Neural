@@ -3,6 +3,9 @@
 #include "Neural/Logging/Logging.h"
 
 #include <glad/glad.h>
+
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Neural {
 	Shader::Shader(const char* vertexSrc, const char* fragmentSrc)
 	{
@@ -73,29 +76,29 @@ namespace Neural {
 		// Vertex and fragment shaders are successfully compiled.
 		// Now time to link them together into a program.
 		// Get a program object.
-		c_rendererId = glCreateProgram();
+		m_rendererID = glCreateProgram();
 
 		// Attach our shaders to our program
-		glAttachShader(c_rendererId, vertexShader);
-		glAttachShader(c_rendererId, fragmentShader);
+		glAttachShader(m_rendererID, vertexShader);
+		glAttachShader(m_rendererID, fragmentShader);
 
 		// Link our program
-		glLinkProgram(c_rendererId);
+		glLinkProgram(m_rendererID);
 
 		// Note the different functions here: glGetProgram* instead of glGetShader*.
 		GLint isLinked = 0;
-		glGetProgramiv(c_rendererId, GL_LINK_STATUS, (int*)&isLinked);
+		glGetProgramiv(m_rendererID, GL_LINK_STATUS, (int*)&isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
-			glGetProgramiv(c_rendererId, GL_INFO_LOG_LENGTH, &maxLength);
+			glGetProgramiv(m_rendererID, GL_INFO_LOG_LENGTH, &maxLength);
 
 			// The maxLength includes the NULL character
 			char* infoLog = new char [maxLength];
-			glGetProgramInfoLog(c_rendererId, maxLength, &maxLength, &infoLog[0]);
+			glGetProgramInfoLog(m_rendererID, maxLength, &maxLength, &infoLog[0]);
 
 			// We don't need the program anymore.
-			glDeleteProgram(c_rendererId);
+			glDeleteProgram(m_rendererID);
 			// Don't leak shaders either.
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
@@ -109,23 +112,29 @@ namespace Neural {
 		}
 
 		// Always detach shaders after a successful link.
-		glDetachShader(c_rendererId, vertexShader);
-		glDetachShader(c_rendererId, fragmentShader);
+		glDetachShader(m_rendererID, vertexShader);
+		glDetachShader(m_rendererID, fragmentShader);
 	}
 
 	Shader::~Shader()
 	{
-		glDeleteProgram(c_rendererId);
+		glDeleteProgram(m_rendererID);
 	}
 
 	void Shader::bind() const
 	{
-		glUseProgram(c_rendererId);
+		glUseProgram(m_rendererID);
 	}
 
 	void Shader::unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	void Shader::uploadUniformMat4(const char *name, const glm::mat4& matrix)
+	{
+		int location = glGetUniformLocation(m_rendererID, name);
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
 }

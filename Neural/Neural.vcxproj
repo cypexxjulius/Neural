@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Neural\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Platform\Opengl\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Neural\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Neural\Renderer\RenderCommand.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\Neural\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Neural\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Platform\Opengl\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Neural\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Neural\Renderer\RendererAPI.cpp" />

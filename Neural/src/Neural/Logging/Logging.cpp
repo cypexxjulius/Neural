@@ -4,15 +4,15 @@
 
 
 namespace Neural {
-	std::shared_ptr<spdlog::logger> Logging::c_CoreLogger;
-	std::shared_ptr<spdlog::logger> Logging::c_ClientLogger;
+	std::shared_ptr<spdlog::logger> Logging::m_CoreLogger;
+	std::shared_ptr<spdlog::logger> Logging::m_ClientLogger;
 
 	void Logging::init() {
 		spdlog::set_pattern("%^[ + ] %n: %v%$");
-		c_CoreLogger = spdlog::stdout_color_mt("Neural");
-		c_CoreLogger->set_level(spdlog::level::trace);
+		m_CoreLogger = spdlog::stdout_color_mt("Neural");
+		m_CoreLogger->set_level(spdlog::level::trace);
 		
-		c_ClientLogger = spdlog::stdout_color_mt("APP");
-		c_ClientLogger->set_level(spdlog::level::trace);
+		m_ClientLogger = spdlog::stdout_color_mt("APP");
+		m_ClientLogger->set_level(spdlog::level::trace);
 	}
 }

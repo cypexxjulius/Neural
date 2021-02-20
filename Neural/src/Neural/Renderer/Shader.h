@@ -1,4 +1,7 @@
 #pragma once
+
+#include <glm/glm.hpp>
+
 namespace Neural
 {
 	class Shader
@@ -10,8 +13,12 @@ namespace Neural
 		void bind() const;
 		void unbind() const;
 
+		void uploadUniformMat4(const char* name, const glm::mat4& matrix);
+
+
+
 	private:
-		unsigned int c_rendererId;
+		unsigned int m_rendererID;
 	};
 
 }

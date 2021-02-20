@@ -12,10 +12,10 @@ namespace Neural {
 	class Input
 	{
 	public:
-		inline static bool isKeyPressed(int keycode) { return c_Instance->isKeyPressedImpl(keycode); }
+		inline static bool isKeyPressed(int keycode) { return m_Instance->isKeyPressedImpl(keycode); }
 
-		inline static bool isMouseButtonPressed(int button) { return c_Instance->isMouseButtonPressedImpl(button); }
-		inline static MousePosition getMousePosition() { return c_Instance->getMousePositionImpl(); }
+		inline static bool isMouseButtonPressed(int button) { return m_Instance->isMouseButtonPressedImpl(button); }
+		inline static MousePosition getMousePosition() { return m_Instance->getMousePositionImpl(); }
 
 	protected:
 		virtual bool isKeyPressedImpl(int keycode) = 0;
@@ -23,7 +23,7 @@ namespace Neural {
 		virtual bool isMouseButtonPressedImpl(int button) = 0;
 		virtual MousePosition getMousePositionImpl() = 0;
 	private:
-		static Input* c_Instance;
+		static Input* m_Instance;
 	};
 
 }

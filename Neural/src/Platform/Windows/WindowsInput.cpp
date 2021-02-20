@@ -6,7 +6,7 @@
 
 namespace Neural 
 {
-	Input* Input::c_Instance = new WindowsInput;
+	Input* Input::m_Instance = new WindowsInput;
 
 	bool WindowsInput::isKeyPressedImpl(int keycode)
 	{

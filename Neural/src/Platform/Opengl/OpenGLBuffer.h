@@ -15,15 +15,15 @@ namespace Neural
 
 		virtual void setLayout(const BufferLayout& layout) override
 		{
-			c_layout = layout;
+			m_layout = layout;
 		}
 		virtual const BufferLayout& getLayout() const override
 		{
-			return c_layout;
+			return m_layout;
 		}
 	private:
-		uint32_t c_rendererId;
-		BufferLayout c_layout;
+		uint32_t m_rendererId;
+		BufferLayout m_layout;
 	};
 
 	class OpenGLIndexBuffer : public IndexBuffer
@@ -37,10 +37,10 @@ namespace Neural
 		virtual void unbind() const override;
 
 		
-		virtual uint32_t getCount() const { return c_count; };
+		virtual uint32_t getCount() const { return m_count; };
 	private:
-		uint32_t c_count;
-		uint32_t c_rendererId;
+		uint32_t m_count;
+		uint32_t m_rendererId;
 	};
 }
 

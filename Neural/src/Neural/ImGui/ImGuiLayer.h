@@ -21,7 +21,7 @@ namespace Neural {
 		void end();
 
 	private:
-		float c_time = 0.0f;
+		float m_time = 0.0f;
 	};
 
 }

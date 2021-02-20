@@ -29,11 +29,11 @@ namespace Neural
 	}
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
-		glCreateVertexArrays(1, &c_rendererId);
+		glCreateVertexArrays(1, &m_rendererId);
 	}
 	void OpenGLVertexArray::bind() const
 	{
-		glBindVertexArray(c_rendererId);
+		glBindVertexArray(m_rendererId);
 	}
 	void OpenGLVertexArray::unbind() const
 	{
@@ -43,7 +43,7 @@ namespace Neural
 	{
 		NL_CORE_ASSERT(vertexBuffer->getLayout().getElements().size(), "Vertex Buffer has no layout!");
 
-		glBindVertexArray(c_rendererId);
+		glBindVertexArray(m_rendererId);
 		vertexBuffer->bind();
 
 
@@ -61,13 +61,13 @@ namespace Neural
 			index++;
 		}
 
-		c_vertexBuffer.push_back(vertexBuffer);
+		m_vertexBuffer.push_back(vertexBuffer);
 	}
 	void OpenGLVertexArray::setIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
 	{
-		glBindVertexArray(c_rendererId);
+		glBindVertexArray(m_rendererId);
 		indexBuffer->bind();
 
-		c_indexBuffer = indexBuffer;
+		m_indexBuffer = indexBuffer;
 	}
 }

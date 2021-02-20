@@ -18,9 +18,9 @@ namespace Neural
 
 		virtual void drawIndexed(const std::shared_ptr<VertexArray>& vertexArray) = 0;
 
-		static inline API getAPI() { return c_API; }
+		static inline API getAPI() { return m_API; }
 	private:
-		static API c_API;
+		static API m_API;
 	};
 }
 

@@ -6,13 +6,13 @@ namespace Neural
 	class NEURAL_API MouseMovedEvent : public Event
 	{
 	private:
-		float c_mouseX, c_mouseY;
+		float m_mouseX, m_mouseY;
 	public:
 		MouseMovedEvent(float x, float y)
-			: c_mouseX(x), c_mouseY(y) {}
+			: m_mouseX(x), m_mouseY(y) {}
 
-		inline float getX() const { return c_mouseX; }
-		inline float getY() const { return c_mouseY; }
+		inline float getX() const { return m_mouseX; }
+		inline float getY() const { return m_mouseY; }
 		
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
@@ -21,13 +21,13 @@ namespace Neural
 	class NEURAL_API MouseScrolledEvent : public Event
 	{
 	private:
-		float c_xOffset, c_yOffset;
+		float m_xOffset, m_yOffset;
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
-			: c_xOffset(xOffset), c_yOffset(yOffset) {}
+			: m_xOffset(xOffset), m_yOffset(yOffset) {}
 
-		inline float getXOffset() const { return c_xOffset; }
-		inline float getYOffset() const { return c_yOffset; }
+		inline float getXOffset() const { return m_xOffset; }
+		inline float getYOffset() const { return m_yOffset; }
 
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
@@ -35,11 +35,11 @@ namespace Neural
 
 	class NEURAL_API MouseButtonEvent : public Event {
 	protected:
-		int c_button;
+		int m_button;
 		MouseButtonEvent(int button)
-			: c_button(button) {}
+			: m_button(button) {}
 	public:
-		inline int getMouseButton() const { return c_button; }
+		inline int getMouseButton() const { return m_button; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 

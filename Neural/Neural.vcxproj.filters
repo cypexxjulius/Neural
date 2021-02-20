@@ -85,6 +85,7 @@
     <ClInclude Include="src\Neural\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Neural\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\Opengl\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Neural\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\nlpch.cpp" />
@@ -122,5 +123,6 @@
     <ClCompile Include="src\Neural\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Neural\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\Opengl\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Neural\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

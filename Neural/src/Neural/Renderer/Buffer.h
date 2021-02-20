@@ -82,33 +82,33 @@ namespace Neural
 	public:
 		BufferLayout() {}
 		BufferLayout(const std::initializer_list<BufferElement>& elements)
-			: c_elements(elements) 
+			: m_elements(elements) 
 		{
 			calculateOffsetsAndStride();
 		}
-		inline const std::vector<BufferElement>& getElements() const { return c_elements;  }
+		inline const std::vector<BufferElement>& getElements() const { return m_elements;  }
 		
-		inline uint32_t getStride() const { return c_stride; }
+		inline uint32_t getStride() const { return m_stride; }
 
-		std::vector<BufferElement>::iterator begin() { return c_elements.begin(); }
-		std::vector<BufferElement>::iterator end() { return c_elements.end(); }
+		std::vector<BufferElement>::iterator begin() { return m_elements.begin(); }
+		std::vector<BufferElement>::iterator end() { return m_elements.end(); }
 
-		std::vector<BufferElement>::const_iterator begin() const { return c_elements.begin(); }
-		std::vector<BufferElement>::const_iterator end() const { return c_elements.end(); }
+		std::vector<BufferElement>::const_iterator begin() const { return m_elements.begin(); }
+		std::vector<BufferElement>::const_iterator end() const { return m_elements.end(); }
 	private:
 		void calculateOffsetsAndStride()
 		{
 			uint32_t offset = 0;
-			for (auto& element : c_elements)
+			for (auto& element : m_elements)
 			{
 				element.s_offset = offset;
 				offset += element.s_size;
-				c_stride += element.s_size;
+				m_stride += element.s_size;
 			}
 		}
 	private:
-		std::vector<BufferElement> c_elements;
-		uint32_t c_stride = 0;
+		std::vector<BufferElement> m_elements;
+		uint32_t m_stride = 0;
 	};
 
 

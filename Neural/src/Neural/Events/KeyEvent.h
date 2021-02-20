@@ -13,26 +13,26 @@ namespace Neural {
 
 	public:
 		inline int getKeyCode() const {
-			return c_keyCode;
+			return m_keyCode;
 		}
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 	protected:
 		KeyEvent(int keycode)
-			: c_keyCode(keycode) {}
+			: m_keyCode(keycode) {}
 
-		int c_keyCode;
+		int m_keyCode;
 	};
 
 	class NEURAL_API KeyPressedEvent
 		: public KeyEvent {
 	private:
-		int c_repeatCount;
+		int m_repeatCount;
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
-			: KeyEvent(keycode), c_repeatCount(repeatCount) {}
+			: KeyEvent(keycode), m_repeatCount(repeatCount) {}
 		
-		inline int getRepeatCount() const { return c_repeatCount;}
+		inline int getRepeatCount() const { return m_repeatCount;}
 
 		EVENT_CLASS_TYPE(KeyPressed)
 	};

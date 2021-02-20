@@ -20,11 +20,11 @@ namespace Neural
 		void pushOverlay(Layer* overlay);
 		void popOverlay(Layer* overlay);
 
-		std::vector<Layer*>::iterator begin() { return c_layers.begin(); }
-		std::vector<Layer*>::iterator end() { return c_layers.end(); }
+		std::vector<Layer*>::iterator begin() { return m_layers.begin(); }
+		std::vector<Layer*>::iterator end() { return m_layers.end(); }
 	private:
-		std::vector<Layer*> c_layers;
-		unsigned int c_layerInsertIndex = 0;
+		std::vector<Layer*> m_layers;
+		unsigned int m_layerInsertIndex = 0;
 	};
 
 }

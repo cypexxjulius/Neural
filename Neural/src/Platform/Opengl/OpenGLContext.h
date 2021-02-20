@@ -14,6 +14,6 @@ namespace Neural
 		virtual void init() override;
 		virtual void swapBuffers() override; 
 	private:
-		GLFWwindow* c_windowHandle;
+		GLFWwindow* m_windowHandle;
 	};
 }

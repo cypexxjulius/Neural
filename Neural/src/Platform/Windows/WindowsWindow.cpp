@@ -31,9 +31,9 @@ namespace Neural
 
 	void WindowsWindow::init(const WindowProps& props)
 	{
-		c_data.s_title = props.s_title;
-		c_data.s_width = props.s_width;
-		c_data.s_height = props.s_height;
+		m_data.s_title = props.s_title;
+		m_data.s_width = props.s_width;
+		m_data.s_height = props.s_height;
 
 
 		NL_CORE_INFO("Creating window {0} ({1}, {2})", props.s_title, props.s_width, props.s_height);
@@ -46,18 +46,18 @@ namespace Neural
 
 			i_GLFWInitialized = true;
 		}
-		c_window = glfwCreateWindow((int)props.s_width, (int)props.s_height, props.s_title, nullptr, nullptr);
+		m_window = glfwCreateWindow((int)props.s_width, (int)props.s_height, props.s_title, nullptr, nullptr);
 		
-		c_context = new OpenGLContext(c_window);
-		c_context->init();
+		m_context = new OpenGLContext(m_window);
+		m_context->init();
 	
 
-		glfwSetWindowUserPointer(c_window, &c_data);
+		glfwSetWindowUserPointer(m_window, &m_data);
 		setVSync(true);
 
 
 		// Set GLFW callbacks
-		glfwSetWindowSizeCallback(c_window, [](GLFWwindow* window, int width, int height) 
+		glfwSetWindowSizeCallback(m_window, [](GLFWwindow* window, int width, int height) 
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				data.s_width = width;
@@ -67,7 +67,7 @@ namespace Neural
 				data.s_eventCallback(event);
 				
 		});
-		glfwSetWindowCloseCallback(c_window, [](GLFWwindow* window) 
+		glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window) 
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -75,7 +75,7 @@ namespace Neural
 				data.s_eventCallback(event);
 		});
 
-		glfwSetKeyCallback(c_window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
+		glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				switch(action) 
@@ -101,7 +101,7 @@ namespace Neural
 				}
 		});
 
-		glfwSetCharCallback(c_window, [](GLFWwindow* window, unsigned int keycode)
+		glfwSetCharCallback(m_window, [](GLFWwindow* window, unsigned int keycode)
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				KeyTypedEvent event(keycode);
@@ -109,7 +109,7 @@ namespace Neural
 
 		});
 
-		glfwSetMouseButtonCallback(c_window, [](GLFWwindow* window, int button, int action, int mods)
+		glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int button, int action, int mods)
 		{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			
@@ -130,14 +130,14 @@ namespace Neural
 				}
 		});
 
-		glfwSetScrollCallback(c_window, [](GLFWwindow* window, double xOffset, double yOffset) 
+		glfwSetScrollCallback(m_window, [](GLFWwindow* window, double xOffset, double yOffset) 
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			MouseScrolledEvent event((float)xOffset, (float)yOffset);
 			data.s_eventCallback(event);
 		});
 
-		glfwSetCursorPosCallback(c_window, [](GLFWwindow* window, double xPos, double yPos) 
+		glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xPos, double yPos) 
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			MouseMovedEvent event((float)xPos, (float)yPos);
@@ -147,21 +147,21 @@ namespace Neural
 
 	void WindowsWindow::shutdown()
 	{
-		glfwDestroyWindow(c_window);
+		glfwDestroyWindow(m_window);
 	}
 	void WindowsWindow:: onUpdate() 
 	{
 		glfwPollEvents();
-		c_context->swapBuffers();
+		m_context->swapBuffers();
 	}
 
 	void WindowsWindow::setVSync(bool enabled) {
 		glfwSwapInterval(enabled ? 1 : 0);
-		c_data.s_vsync = enabled;
+		m_data.s_vsync = enabled;
 	}
 
 	bool WindowsWindow::isVSync() const
 	{
-		return c_data.s_vsync;
+		return m_data.s_vsync;
 	}
 }

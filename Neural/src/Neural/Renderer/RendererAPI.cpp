@@ -7,6 +7,6 @@
 
 namespace Neural
 {
-	RendererAPI::API RendererAPI::c_API = RendererAPI::API::OpenGL;
+	RendererAPI::API RendererAPI::m_API = RendererAPI::API::OpenGL;
 }
 

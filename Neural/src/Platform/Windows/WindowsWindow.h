@@ -16,18 +16,18 @@ namespace  Neural {
 
 		void onUpdate() override;
 
-		inline unsigned int getWidth() const override { return c_data.s_width; }
-		inline unsigned int getHeight() const override { return c_data.s_height;  }
+		inline unsigned int getWidth() const override { return m_data.s_width; }
+		inline unsigned int getHeight() const override { return m_data.s_height;  }
 
 
 		// Window attribute
-		inline void setEventCallback(const EventCallbackFunction& callback) override { c_data.s_eventCallback= callback;  }
+		inline void setEventCallback(const EventCallbackFunction& callback) override { m_data.s_eventCallback= callback;  }
 		void setVSync(bool enabled) override;
 		bool isVSync() const override;
 
 		inline virtual void* getNativeWindow() const
 		{
-			return c_window;
+			return m_window;
 		}
 	private:
 		virtual void init(const WindowProps& props);
@@ -35,7 +35,7 @@ namespace  Neural {
 
 
 	private:
-		GLFWwindow* c_window;
+		GLFWwindow* m_window;
 		struct WindowData 
 		{
 			const char* s_title;
@@ -44,8 +44,8 @@ namespace  Neural {
 			EventCallbackFunction s_eventCallback;
 		};
 	private:
-		WindowData c_data;
-		GraphicsContext* c_context;
+		WindowData m_data;
+		GraphicsContext* m_context;
 	};
 
 }

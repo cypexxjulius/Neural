@@ -46,7 +46,7 @@ namespace Neural {
 			}
 
 		public:
-			bool c_handled = false;
+			bool m_handled = false;
 
 		};
 
@@ -59,17 +59,17 @@ namespace Neural {
 			template<typename T>
 			using EventFn = std::function<bool(T&)>;
 		
-			Event& c_Event;
+			Event& m_Event;
 		public:
 			EventDispatcher(Event& event)
-				: c_Event(event) {}
+				: m_Event(event) {}
 
 			template<typename T> 
 			bool dispatch(EventFn<T> func) 
 			{
-				if (c_Event.getEventType() == T::getStaticType()) 
+				if (m_Event.getEventType() == T::getStaticType()) 
 				{
-					c_Event.c_handled = func(*(T*)&c_Event);
+					m_Event.m_handled = func(*(T*)&m_Event);
 					return true;
 				}
 				return false;

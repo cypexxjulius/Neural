@@ -8,13 +8,13 @@
 namespace Neural 
 {
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
-		: c_windowHandle(windowHandle)
+		: m_windowHandle(windowHandle)
 	{
 		NL_ASSERT(windowHandle, "Window handle is not valid!");
 	}
 	void OpenGLContext::init()
 	{
-		glfwMakeContextCurrent(c_windowHandle);
+		glfwMakeContextCurrent(m_windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NL_CORE_ASSERT(status, "Failed to initialize Glad!");
 		
@@ -27,6 +27,6 @@ namespace Neural
 	}	
 	void OpenGLContext::swapBuffers()
 	{
-		glfwSwapBuffers(c_windowHandle);
+		glfwSwapBuffers(m_windowHandle);
 	}
 }

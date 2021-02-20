@@ -8,16 +8,16 @@ namespace Neural {
 	class NEURAL_API WindowResizeEvent
 		: public Event {
 	private:
-		unsigned int c_width, c_height;
+		unsigned int m_width, m_height;
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
-			: c_width(width), c_height(height) {}
+			: m_width(width), m_height(height) {}
 
 		inline unsigned int getWidth() const {
-			return c_width;
+			return m_width;
 		}
 		inline unsigned int getHeight() const {
-			return c_height;
+			return m_height;
 		}
 
 		EVENT_CLASS_TYPE(WindowResize)

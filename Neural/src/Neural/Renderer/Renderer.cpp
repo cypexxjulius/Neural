@@ -4,7 +4,7 @@
 
 namespace Neural
 {
-	void Renderer::beginScene()
+	void Renderer::beginScene(OrthographicCamera& camera)
 	{
 
 	}

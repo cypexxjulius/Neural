@@ -9,16 +9,16 @@
 namespace Neural {
 	class Logging {
 	private:
-		static std::shared_ptr<spdlog::logger> c_CoreLogger;
-		static std::shared_ptr<spdlog::logger> c_ClientLogger;
+		static std::shared_ptr<spdlog::logger> m_CoreLogger;
+		static std::shared_ptr<spdlog::logger> m_ClientLogger;
 	public:
 		static void init();
 
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() {
-			return c_CoreLogger;
+			return m_CoreLogger;
 		}
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() {
-			return c_ClientLogger;
+			return m_ClientLogger;
 		}
 
 	};

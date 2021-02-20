@@ -5,7 +5,7 @@
 namespace Neural 
 {
 	Layer::Layer(const char* debugName)
-		: c_debugName(debugName) {}
+		: m_debugName(debugName) {}
 
 	Layer::~Layer() {}
 	

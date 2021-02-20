@@ -18,16 +18,16 @@ namespace Neural
 		
 		virtual const std::vector<std::shared_ptr<VertexBuffer>>& getVertexBuffers() const override
 		{
-			return c_vertexBuffer;
+			return m_vertexBuffer;
 		}
 		virtual const std::shared_ptr<IndexBuffer>& getIndexBuffer() const override
 		{
-			return c_indexBuffer;
+			return m_indexBuffer;
 		}
 	private:
-		uint32_t c_rendererId;
-		std::vector<std::shared_ptr<VertexBuffer>> c_vertexBuffer;
-		std::shared_ptr<IndexBuffer> c_indexBuffer;
+		uint32_t m_rendererId;
+		std::vector<std::shared_ptr<VertexBuffer>> m_vertexBuffer;
+		std::shared_ptr<IndexBuffer> m_indexBuffer;
 	};
 }
 
