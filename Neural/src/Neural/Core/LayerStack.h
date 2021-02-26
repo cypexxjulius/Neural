@@ -1,9 +1,7 @@
 #pragma once
 
-#include "Neural/Core/Core.h"
-#include "Layer.h"
-
 #include <vector>
+#include "Layer.h"
 
 namespace Neural
 {

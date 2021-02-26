@@ -116,6 +116,7 @@ project "Sandbox"
 	{ 
 		"Neural/vendor/spdlog/include",
 		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.ImGui}",
 		"Neural/src"	
 	}
 	

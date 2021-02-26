@@ -1,8 +1,9 @@
 #pragma once
-#include "Neural/Renderer/Buffer.h"
-
 namespace Neural
 {
+	class VertexBuffer;
+	class IndexBuffer;
+
 	class VertexArray
 	{
 	public:

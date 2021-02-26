@@ -1,6 +1,9 @@
 #include "nlpch.h"
-#include "OpenGLVertexArray.h"
+
+#include "Neural/Renderer/Buffer.h"
 #include <glad/glad.h>
+
+#include "OpenGLVertexArray.h"
 
 namespace Neural
 {

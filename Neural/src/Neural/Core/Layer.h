@@ -1,8 +1,11 @@
 #pragma once
-#include "Neural/Events/Event.h"
+
 
 namespace Neural
 {
+	class Event;
+	class Timestep;
+
 	class Layer
 	{	
 	public:
@@ -11,7 +14,7 @@ namespace Neural
 		
 		virtual void onAttach();
 		virtual void onDetach();
-		virtual void onUpdate();
+		virtual void onUpdate(Timestep timestep);
 		virtual void onEvent(Event& event);
 		virtual void onImGuiRender();
 

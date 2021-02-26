@@ -2,10 +2,9 @@
 
 #include "RendererAPI.h"
 
-#include "RendererAPI.h"
 
 namespace Neural
-{
+{	
 	class RenderCommand
 	{
 	public:

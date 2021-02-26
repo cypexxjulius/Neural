@@ -5,13 +5,13 @@
 
 #include "Neural/Renderer/Renderer.h"
 
+#include <imgui.h>
 
 namespace Neural {
 
 	Application* Application::s_instance = nullptr;
 
 	Application::Application() 
-		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		// Checks if the application already exists
 		NL_ASSERT(!s_instance, "Application already exists!");
@@ -19,141 +19,17 @@ namespace Neural {
 
 		m_window = std::unique_ptr<Window>(Window::create());
 		m_window->setEventCallback(NL_BIND_EVENT_FUNC(Application::onEvent));
-	
+			
 		// Creating the ImGui Layer
 		m_ImGuiLayer = new ImGuiLayer;
 		pushOverlay(m_ImGuiLayer);
+	}
 
-		m_vertexArray.reset(VertexArray::create());
-
-
-		float vertices[] =
-		{
-			-0.5f,  -0.5f,  0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-			 0.5f,   -0.5f, 0.0f, 0.2f, 0.2f, 0.8f, 1.0f,
-			 0.0f,   0.5f,  0.0f, 0.8f, 0.2f, 0.2f, 1.0f
-		};
-
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
-		
-		BufferLayout layout = {
-			{ ShaderDataType::Float3, "a_Position"},
-			{ ShaderDataType::Float4, "a_Color"}
-		};
-
-
-		vertexBuffer->setLayout(layout);
-		m_vertexArray->addVertexBuffer(vertexBuffer);
-
-		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::create(indices, sizeof(indices) / sizeof(uint32_t)));
-
-		m_vertexArray->setIndexBuffer(indexBuffer);
-
-		char vertexSrc[] = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
-			
-			uniform mat4 u_ViewProjection;
-
-			out vec3 v_Position;		
-			out vec4 v_Color;
-	
-			void main()
-			{		
-				v_Position = a_Position;
-				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
-			}
-
-		)";
-
-		char fragmentSrc[] = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 a_Color;
-			in vec4 v_Color;
-			
-			void main()
-			{		
-				a_Color = v_Color;
-			}
-
-		)";
-
-		m_shader.reset(new Shader(vertexSrc, fragmentSrc));
-
-
-		// Test
-
-
-		m_squareVA.reset(VertexArray::create());
-
-		float squareVertices[] =
-		{
-			-0.75f,  -0.75f,  0.0f,
-			 0.75f,   -0.75f, 0.0f,
-			 0.75f,   0.75f,  0.0f,
-			 -0.75f,   0.75f,  0.0f
-		};
-
-		std::shared_ptr<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::create(squareVertices, sizeof(squareVertices)));
-		squareVB->setLayout({ 
-			{ShaderDataType::Float3, "a_Position" } 
-		});
-
-		m_squareVA->addVertexBuffer(squareVB);
-
-		uint32_t squareIndices[] = { 0, 1, 2, 2, 3, 0};
-		std::shared_ptr<IndexBuffer> squareIB; 
-		squareIB.reset(IndexBuffer::create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-
-		m_squareVA->setIndexBuffer(squareIB);
-
-
-
-		char squareVertexSrc[] = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			
-			uniform mat4 u_ViewProjection;
-
-			out vec3 v_Position;
-	
-			void main()
-			{		
-				v_Position = a_Position;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
-			}
-
-		)";
-
-		char squareFragmentSrc[] = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 a_Color;
-			in vec3 v_Position;
-			
-			void main()
-			{		
-				a_Color = vec4(0.2, 0.3, 0.8, 1.0);
-			}
-
-		)";
-
-		m_squareShader.reset(new Shader(squareVertexSrc, squareFragmentSrc));
+	Application::~Application() 
+	{
 
 	}
 
-	Application::~Application() {
-
-	}
 	void Application::pushLayer(Layer *layer)
 	{
 		m_LayerStack.pushLayer(layer);
@@ -180,29 +56,17 @@ namespace Neural {
 
 	void Application::run()
 	{
-		while (m_isRunning) {
+		while (m_isRunning) 
+		{
 
-			RenderCommand::setClearColor({ 0.2f, 0.2f, 0.2f, 1 });
-			RenderCommand::clear();
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_lastFrameTime;
+			m_lastFrameTime = time;
 
-
-			Renderer::beginScene(m_Camera);
-
-			m_squareShader->bind();
-			m_squareShader->uploadUniformMat4("u_ViewProjection", m_Camera.getViewProjectionMatrix());
-
-			Renderer::submit(m_squareVA);
-
-			m_shader->bind();
-			m_shader->uploadUniformMat4("u_ViewProjection", m_Camera.getViewProjectionMatrix());
-
-			Renderer::submit(m_vertexArray);
-
-			Renderer::endScene();
-
+			
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->onUpdate();
+				layer->onUpdate(timestep);
 			}
 			
 			// ImGui Layer
@@ -210,11 +74,9 @@ namespace Neural {
 			m_ImGuiLayer->begin();
 
 			for (Layer* layer : m_LayerStack)
-			{
 				layer->onImGuiRender();
-			}
+			
 			m_ImGuiLayer->end();
-
 
 			m_window->onUpdate();
 

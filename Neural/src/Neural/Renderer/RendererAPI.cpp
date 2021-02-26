@@ -1,9 +1,6 @@
 #include "nlpch.h"
 #include "RendererAPI.h"
 
-#include <glm/glm.hpp>
-#include "VertexArray.h"
-
 
 namespace Neural
 {

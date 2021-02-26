@@ -1,12 +1,11 @@
 #pragma once
-
 #include "nlpch.h"
-
-#include "Neural/Core/Core.h"
-#include "Neural/Events/Event.h"
 
 
 namespace Neural {
+
+	class Event;
+
 	struct WindowProps
 	{
 		const char* s_title;

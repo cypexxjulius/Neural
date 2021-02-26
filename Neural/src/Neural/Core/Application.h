@@ -8,6 +8,14 @@
 #include "Neural/Events/Event.h"
 #include "Neural/Events/ApplicationEvent.h"
 
+// Input Polling
+#include "Neural/Core/Input.h"
+
+// Timing
+
+#include "Neural/Core/Timestep.h"
+
+
 // ImGui
 #include "Neural/ImGui/ImGuiLayer.h"
 
@@ -36,22 +44,16 @@ namespace Neural {
 	private:
 		bool onWindowClose(WindowCloseEvent& event);
 
+	private:
 		std::unique_ptr<Window> m_window;
 		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_isRunning = true;
 		LayerStack m_LayerStack;
+		float m_lastFrameTime = 0.0f;
 	private:
 		
 		static Application* s_instance;
-
-		std::shared_ptr<Shader> m_shader;
-		std::shared_ptr<VertexArray> m_vertexArray;
-
-		std::shared_ptr<Shader> m_squareShader;
-		std::shared_ptr<VertexArray> m_squareVA;
-
-		OrthographicCamera m_Camera;
 	};
 	
 	Application* CreateApplication();

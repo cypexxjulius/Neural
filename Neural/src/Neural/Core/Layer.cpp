@@ -1,6 +1,7 @@
 #include "nlpch.h"
 #include "Layer.h"
 
+#include "Neural/Core/Timestep.h"
 
 namespace Neural 
 {
@@ -11,7 +12,7 @@ namespace Neural
 	
 	void Layer::onAttach() {}
 	void Layer::onDetach() {}
-	void Layer::onUpdate() {}
+	void Layer::onUpdate(Timestep timestep) {}
 	void Layer::onEvent(Event& event) {}
 	void Layer::onImGuiRender() {}
 }

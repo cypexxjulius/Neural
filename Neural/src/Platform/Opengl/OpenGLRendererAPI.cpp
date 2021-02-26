@@ -1,7 +1,11 @@
 #include "nlpch.h"
-#include "OpenGLRendererAPI.h"
+
+
+#include "Neural/Renderer/VertexArray.h"
+#include "Neural/Renderer/Buffer.h"
 
 #include <glad/glad.h>
+#include "OpenGLRendererAPI.h"
 
 namespace Neural
 {

@@ -79,6 +79,6 @@ namespace Neural {
 
 		inline std::ostream& operator<<(std::ostream& os, const Event& event) 
 		{
-			return os << std::string(event.getName());
+			return os << event.getName();
 		}
 }

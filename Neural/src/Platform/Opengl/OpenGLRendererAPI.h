@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Neural/Renderer/RendererAPI.h"
 
 namespace Neural

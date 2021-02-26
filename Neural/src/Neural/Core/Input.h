@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Neural/Core/Core.h"
-
 namespace Neural {
 
 	struct MousePosition

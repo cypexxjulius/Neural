@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Core">
-      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    <Filter Include="Neural">
+      <UniqueIdentifier>{EC2A37C5-D8CC-619B-C187-75EFADC8E8EB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Events">
-      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    <Filter Include="Neural\Core">
+      <UniqueIdentifier>{C4023CC2-30B8-B4B7-B9AC-AE8E2561ABBB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ImGui">
-      <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
+    <Filter Include="Neural\Events">
+      <UniqueIdentifier>{50D56946-BC95-E57C-85D0-2EFAF14F2A59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Logging">
-      <UniqueIdentifier>{AC6878E8-1848-F783-2160-825A8DBE5DE5}</UniqueIdentifier>
+    <Filter Include="Neural\ImGui">
+      <UniqueIdentifier>{1621270A-0284-B6AE-AB09-EF64974B8231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Neural\Logging">
+      <UniqueIdentifier>{8237481E-6E05-3C24-5799-AC4A43061889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Neural\Renderer">
+      <UniqueIdentifier>{12782F7F-7E03-9D43-8714-2038F31EF943}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Opengl">
+      <UniqueIdentifier>{5E812C1D-CA0C-9AE1-D31D-1DD63F28F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -22,90 +31,149 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Neural.h" />
-    <ClInclude Include="src\nlpch.h" />
     <ClInclude Include="src\Neural\Core\Application.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\Core.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\EntryPoint.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\Input.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\Layer.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\LayerStack.h">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Core\Timestep.h">
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Core\Window.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Neural\ImGui\ImGuiLayer.h">
-      <Filter>ImGui</Filter>
+      <Filter>Neural\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Events\ApplicationEvent.h">
-      <Filter>Events</Filter>
+      <Filter>Neural\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Events\Event.h">
-      <Filter>Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Neural\Events\Keycode.h">
-      <Filter>Events</Filter>
+      <Filter>Neural\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Events\KeyEvent.h">
-      <Filter>Events</Filter>
+      <Filter>Neural\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Events\Keycode.h">
+      <Filter>Neural\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Events\MouseButtonCodes.h">
-      <Filter>Events</Filter>
+      <Filter>Neural\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Events\MouseEvent.h">
-      <Filter>Events</Filter>
+      <Filter>Neural\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\ImGui\ImGuiLayer.h">
+      <Filter>Neural\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Neural\Logging\Logging.h">
-      <Filter>Logging</Filter>
+      <Filter>Neural\Logging</Filter>
     </ClInclude>
-    <ClInclude Include="src\Neural\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Neural\Renderer\Buffer.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\GraphicsContext.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\OrthographicCamera.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\RenderCommand.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\Renderer.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\RendererAPI.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\Shader.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neural\Renderer\VertexArray.h">
+      <Filter>Neural\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Opengl\OpenGLBuffer.h">
+      <Filter>Platform\Opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Opengl\OpenGLContext.h">
+      <Filter>Platform\Opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Opengl\OpenGLRendererAPI.h">
+      <Filter>Platform\Opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Opengl\OpenGLVertexArray.h">
+      <Filter>Platform\Opengl</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Opengl\OpenGLContext.h" />
-    <ClInclude Include="src\Neural\Renderer\Shader.h" />
-    <ClInclude Include="src\Neural\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\Opengl\OpenGLBuffer.h" />
-    <ClInclude Include="src\Neural\Renderer\Renderer.h" />
-    <ClInclude Include="src\Neural\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\Opengl\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Neural\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Neural\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\Opengl\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Neural\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\nlpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\nlpch.cpp" />
     <ClCompile Include="src\Neural\Core\Application.cpp">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Neural\Core\Layer.cpp">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Neural\Core\LayerStack.cpp">
-      <Filter>Core</Filter>
+      <Filter>Neural\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Neural\ImGui\ImGuiBuild.cpp">
-      <Filter>ImGui</Filter>
+      <Filter>Neural\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Neural\ImGui\ImGuiLayer.cpp">
-      <Filter>ImGui</Filter>
+      <Filter>Neural\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Neural\Logging\Logging.cpp">
-      <Filter>Logging</Filter>
+      <Filter>Neural\Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\Buffer.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\OrthographicCamera.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\RenderCommand.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\Renderer.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\RendererAPI.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\Shader.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neural\Renderer\VertexArray.cpp">
+      <Filter>Neural\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Opengl\OpenGLBuffer.cpp">
+      <Filter>Platform\Opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Opengl\OpenGLContext.cpp">
+      <Filter>Platform\Opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Opengl\OpenGLRendererAPI.cpp">
+      <Filter>Platform\Opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Opengl\OpenGLVertexArray.cpp">
+      <Filter>Platform\Opengl</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>
@@ -113,16 +181,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Opengl\OpenGLContext.cpp" />
-    <ClCompile Include="src\Neural\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Neural\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\Opengl\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Neural\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Neural\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\Opengl\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Neural\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Neural\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\Opengl\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Neural\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\nlpch.cpp" />
   </ItemGroup>
 </Project>

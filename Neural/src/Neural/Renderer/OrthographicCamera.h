@@ -48,13 +48,14 @@ namespace Neural
 		}
 	private:
 		void RecalculateViewMatrix();
+
 	private:
 		glm::mat4 m_ProjectMatrix;
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_ViewProjectMatrix;
 
 
-		glm::vec3 m_Position;
+		glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
 		float m_rotation = 0.0f;
 	};
 }

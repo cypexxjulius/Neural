@@ -2,6 +2,9 @@
 
 #include "Neural/Renderer/VertexArray.h"
 
+class VertexBuffer;
+class IndexBuffer;
+
 namespace Neural 
 {
 	class OpenGLVertexArray : public VertexArray
