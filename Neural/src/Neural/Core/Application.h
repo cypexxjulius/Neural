@@ -45,7 +45,7 @@ namespace Neural {
 		bool onWindowClose(WindowCloseEvent& event);
 
 	private:
-		std::unique_ptr<Window> m_window;
+		Window* m_window;
 		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_isRunning = true;

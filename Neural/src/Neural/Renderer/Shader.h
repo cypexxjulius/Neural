@@ -13,7 +13,7 @@ namespace Neural
 		void bind() const;
 		void unbind() const;
 
-		void uploadUniformMat4(const char* name, const glm::mat4& matrix);
+		void uploadUniformMat4(const char* name, const glm::mat4& matrix) const;
 
 
 

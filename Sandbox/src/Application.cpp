@@ -8,7 +8,7 @@ public:
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f, 0.0f, 0.0f)
 	{
 
-		m_vertexArray.reset(Neural::VertexArray::create());
+		m_vertexArray = Neural::VertexArray::create();
 
 
 		float vertices[] =
@@ -18,8 +18,7 @@ public:
 			 0.0f,   0.5f,  0.0f, 0.8f, 0.2f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Neural::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Neural::VertexBuffer::create(vertices, sizeof(vertices)));
+		Neural::VertexBuffer* vertexBuffer = Neural::VertexBuffer::create(vertices, sizeof(vertices));
 
 		Neural::BufferLayout layout = {
 			{ Neural::ShaderDataType::Float3, "a_Position"},
@@ -31,8 +30,7 @@ public:
 		m_vertexArray->addVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Neural::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Neural::IndexBuffer::create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Neural::IndexBuffer* indexBuffer = Neural::IndexBuffer::create(indices, sizeof(indices) / sizeof(uint32_t));
 
 		m_vertexArray->setIndexBuffer(indexBuffer);
 
@@ -69,13 +67,13 @@ public:
 
 		)";
 
-		m_shader.reset(new Neural::Shader(vertexSrc, fragmentSrc));
+		m_shader = new Neural::Shader(vertexSrc, fragmentSrc);
 
 
 		// Test
 
 
-		m_squareVA.reset(Neural::VertexArray::create());
+		m_squareVA = Neural::VertexArray::create();
 
 		float squareVertices[] =
 		{
@@ -85,17 +83,15 @@ public:
 			 -0.75f,   0.75f,  0.0f
 		};
 
-		std::shared_ptr<Neural::VertexBuffer> squareVB;
-		squareVB.reset(Neural::VertexBuffer::create(squareVertices, sizeof(squareVertices)));
+		Neural::VertexBuffer* squareVB = Neural::VertexBuffer::create(squareVertices, sizeof(squareVertices));
 		squareVB->setLayout({
 			{ Neural::ShaderDataType::Float3, "a_Position" }
-			});
+		});
 
 		m_squareVA->addVertexBuffer(squareVB);
 
 		uint32_t squareIndices[] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Neural::IndexBuffer> squareIB;
-		squareIB.reset(Neural::IndexBuffer::create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Neural::IndexBuffer* squareIB = Neural::IndexBuffer::create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 
 		m_squareVA->setIndexBuffer(squareIB);
 
@@ -131,8 +127,7 @@ public:
 
 		)";
 
-		m_squareShader.reset(new Neural::Shader(squareVertexSrc, squareFragmentSrc));
-
+		m_squareShader = new Neural::Shader(squareVertexSrc, squareFragmentSrc);
 	}
 
 	void onUpdate(Neural::Timestep timestep) override
@@ -177,12 +172,21 @@ public:
 	{
 	}
 
-private:
-	std::shared_ptr<Neural::Shader> m_shader;
-	std::shared_ptr<Neural::VertexArray> m_vertexArray;
+	~ExampleLayer()
+	{
+		delete m_shader;
+		delete m_vertexArray;
 
-	std::shared_ptr<Neural::Shader> m_squareShader;
-	std::shared_ptr<Neural::VertexArray> m_squareVA;
+		delete m_squareShader;
+		delete m_squareVA;
+	}
+
+private:
+	Neural::Shader* m_shader;
+	Neural::VertexArray* m_vertexArray;
+
+	Neural::Shader* m_squareShader;
+	Neural::VertexArray* m_squareVA;
 
 	Neural::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

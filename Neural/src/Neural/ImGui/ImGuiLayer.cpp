@@ -104,6 +104,5 @@ namespace Neural {
 	void ImGuiLayer::onImGuiRender()
 	{
 		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
 	}
 }

@@ -17,7 +17,7 @@ namespace Neural
 			m_rendererAPI->clear();
 		}
 
-		inline static void drawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		inline static void drawIndexed(const VertexArray* vertexArray)
 		{
 			m_rendererAPI->drawIndexed(vertexArray);
 		}

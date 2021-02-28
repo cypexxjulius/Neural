@@ -12,7 +12,7 @@ namespace Neural
 			case RendererAPI::API::None :
 			{
 				NL_ASSERT(false, "RendererAPI::None is not supported");
-				return nullptr;
+				return NULL;
 			}		
 			case RendererAPI::API::OpenGL :
 				return new OpenGLIndexBuffer(vertices, size);
@@ -28,7 +28,7 @@ namespace Neural
 		case RendererAPI::API::None:
 		{
 			NL_ASSERT(false, "RendererAPI::None is not supported");
-			return nullptr;
+			return NULL;
 		}
 		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);

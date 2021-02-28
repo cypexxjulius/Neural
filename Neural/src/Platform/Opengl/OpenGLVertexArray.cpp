@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 
 #include "OpenGLVertexArray.h"
+#include "Neural/Logging/Logging.h"
 
 namespace Neural
 {
@@ -42,7 +43,7 @@ namespace Neural
 	{
 		glBindVertexArray(0);
 	}
-	void OpenGLVertexArray::addVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::addVertexBuffer(VertexBuffer* vertexBuffer)
 	{
 		NL_CORE_ASSERT(vertexBuffer->getLayout().getElements().size(), "Vertex Buffer has no layout!");
 
@@ -66,11 +67,10 @@ namespace Neural
 
 		m_vertexBuffer.push_back(vertexBuffer);
 	}
-	void OpenGLVertexArray::setIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::setIndexBuffer(IndexBuffer* indexBuffer)
 	{
 		glBindVertexArray(m_rendererId);
 		indexBuffer->bind();
-
 		m_indexBuffer = indexBuffer;
 	}
 }

@@ -17,7 +17,7 @@ namespace Neural {
 		NL_ASSERT(!s_instance, "Application already exists!");
 		s_instance = this;
 
-		m_window = std::unique_ptr<Window>(Window::create());
+		m_window = Window::create();
 		m_window->setEventCallback(NL_BIND_EVENT_FUNC(Application::onEvent));
 			
 		// Creating the ImGui Layer
@@ -27,7 +27,7 @@ namespace Neural {
 
 	Application::~Application() 
 	{
-
+		delete m_window;
 	}
 
 	void Application::pushLayer(Layer *layer)

@@ -3,12 +3,14 @@
 
 #include "RenderCommand.h"
 
-class Shader;
-class OrthographicCamera;
 
 
 namespace Neural
 {
+	class Shader;
+	class OrthographicCamera;
+
+
 	class Renderer
 	{
 	public:
@@ -17,7 +19,7 @@ namespace Neural
 
 		static void endScene();
 
-		static void submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray);
+		static void submit(const Shader* shader, const VertexArray* vertexArray);
 
 		inline static RendererAPI::API getAPI() 
 		{ 

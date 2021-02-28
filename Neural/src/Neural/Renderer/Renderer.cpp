@@ -18,7 +18,7 @@ namespace Neural
 	void Renderer::endScene()
 	{
 	}
-	void Renderer::submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::submit(const Shader* shader, const VertexArray* vertexArray)
 	{
 		shader->bind();
 

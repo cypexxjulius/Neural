@@ -8,6 +8,7 @@
 
 namespace Neural {
 	Shader::Shader(const char* vertexSrc, const char* fragmentSrc)
+		: m_rendererID(0)
 	{
 
 		// Create an empty vertex shader handle
@@ -131,7 +132,7 @@ namespace Neural {
 		glUseProgram(0);
 	}
 
-	void Shader::uploadUniformMat4(const char *name, const glm::mat4& matrix)
+	void Shader::uploadUniformMat4(const char *name, const glm::mat4& matrix) const 
 	{
 		int location = glGetUniformLocation(m_rendererID, name);
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
