@@ -122,6 +122,7 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\nlpch.h" />
+    <ClInclude Include="src\Platform\Opengl\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Neural\Core\Application.cpp">
@@ -182,5 +183,7 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\nlpch.cpp" />
+    <ClCompile Include="src\Neural\Core\Timestep.cpp" />
+    <ClCompile Include="src\Platform\Opengl\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

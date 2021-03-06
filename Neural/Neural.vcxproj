@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Opengl\OpenGLShader.h" />
     <ClInclude Include="src\Neural.h" />
     <ClInclude Include="src\Neural\Core\Application.h" />
     <ClInclude Include="src\Neural\Core\Core.h" />
@@ -174,9 +175,11 @@
     <ClInclude Include="src\nlpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Opengl\OpenGLShader.cpp" />
     <ClCompile Include="src\Neural\Core\Application.cpp" />
     <ClCompile Include="src\Neural\Core\Layer.cpp" />
     <ClCompile Include="src\Neural\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Neural\Core\Timestep.cpp" />
     <ClCompile Include="src\Neural\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Neural\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Neural\Logging\Logging.cpp" />

@@ -14,5 +14,5 @@ namespace Neural
 	void Layer::onDetach() {}
 	void Layer::onUpdate(Timestep timestep) {}
 	void Layer::onEvent(Event& event) {}
-	void Layer::onImGuiRender() {}
+	void Layer::onImGuiRender(Timestep timestep) {}
 }

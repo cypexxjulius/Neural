@@ -15,7 +15,7 @@ namespace Neural {
 
 		virtual void onAttach();
 		virtual void onDetach();
-		virtual void onImGuiRender() override;
+		virtual void onImGuiRender(Timestep timestep) override;
 
 		void begin();
 		void end();

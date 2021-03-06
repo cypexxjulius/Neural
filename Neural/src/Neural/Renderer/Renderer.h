@@ -19,7 +19,7 @@ namespace Neural
 
 		static void endScene();
 
-		static void submit(const Shader* shader, const VertexArray* vertexArray);
+		static void submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
 
 		inline static RendererAPI::API getAPI() 
 		{ 
@@ -30,6 +30,6 @@ namespace Neural
 		{
 			glm::mat4 ViewProjMatrix;
 		};
-		static SceneData* m_SceneData;
+		static SceneData* s_SceneData;
 	};
 }

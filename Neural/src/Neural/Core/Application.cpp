@@ -17,9 +17,10 @@ namespace Neural {
 		NL_ASSERT(!s_instance, "Application already exists!");
 		s_instance = this;
 
-		m_window = Window::create();
+		m_window.reset(Window::create());
 		m_window->setEventCallback(NL_BIND_EVENT_FUNC(Application::onEvent));
-			
+		m_window->setVSync(1);
+
 		// Creating the ImGui Layer
 		m_ImGuiLayer = new ImGuiLayer;
 		pushOverlay(m_ImGuiLayer);
@@ -27,10 +28,9 @@ namespace Neural {
 
 	Application::~Application() 
 	{
-		delete m_window;
 	}
 
-	void Application::pushLayer(Layer *layer)
+	void Application::pushLayer(Layer* layer)
 	{
 		m_LayerStack.pushLayer(layer);
 		layer->onAttach();
@@ -46,9 +46,9 @@ namespace Neural {
 		EventDispatcher dispatcher(event);
 		dispatcher.dispatch<WindowCloseEvent>(NL_BIND_EVENT_FUNC(Application::onWindowClose));
 
-		for (auto i = m_LayerStack.end(); i != m_LayerStack.begin();)
+		for (auto layer : m_LayerStack)
 		{
-			(*--i)->onEvent(event);
+			layer->onEvent(event);
 			if (event.m_handled)
 				break;
 		}
@@ -59,7 +59,8 @@ namespace Neural {
 		while (m_isRunning) 
 		{
 
-			float time = (float)glfwGetTime();
+			float time = Timestep::getTime();
+
 			Timestep timestep = time - m_lastFrameTime;
 			m_lastFrameTime = time;
 
@@ -74,7 +75,7 @@ namespace Neural {
 			m_ImGuiLayer->begin();
 
 			for (Layer* layer : m_LayerStack)
-				layer->onImGuiRender();
+				layer->onImGuiRender(timestep);
 			
 			m_ImGuiLayer->end();
 

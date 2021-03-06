@@ -45,7 +45,7 @@ namespace Neural {
 		bool onWindowClose(WindowCloseEvent& event);
 
 	private:
-		Window* m_window;
+		Scope<Window> m_window;
 		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_isRunning = true;

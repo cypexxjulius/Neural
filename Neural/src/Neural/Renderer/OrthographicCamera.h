@@ -46,14 +46,28 @@ namespace Neural
 		{
 			return m_ViewProjectMatrix;
 		}
+
+
+		const float getWidth() const
+		{
+			return m_width;
+		}
+
+		const float getHeight() const
+		{
+			return m_height;
+		}
+
 	private:
 		void RecalculateViewMatrix();
 
 	private:
+
 		glm::mat4 m_ProjectMatrix;
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_ViewProjectMatrix;
 
+		float m_width, m_height;
 
 		glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
 		float m_rotation = 0.0f;

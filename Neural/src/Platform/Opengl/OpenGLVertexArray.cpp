@@ -43,7 +43,7 @@ namespace Neural
 	{
 		glBindVertexArray(0);
 	}
-	void OpenGLVertexArray::addVertexBuffer(VertexBuffer* vertexBuffer)
+	void OpenGLVertexArray::addVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		NL_CORE_ASSERT(vertexBuffer->getLayout().getElements().size(), "Vertex Buffer has no layout!");
 
@@ -67,7 +67,7 @@ namespace Neural
 
 		m_vertexBuffer.push_back(vertexBuffer);
 	}
-	void OpenGLVertexArray::setIndexBuffer(IndexBuffer* indexBuffer)
+	void OpenGLVertexArray::setIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_rendererId);
 		indexBuffer->bind();

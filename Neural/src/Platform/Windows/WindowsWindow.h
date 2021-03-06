@@ -12,6 +12,8 @@ namespace  Neural {
 	public:
 		WindowsWindow(const WindowProps& props);
 
+
+
 		virtual ~WindowsWindow();
 
 		void onUpdate() override;
@@ -29,6 +31,9 @@ namespace  Neural {
 		{
 			return m_window;
 		}
+
+
+
 	private:
 		virtual void init(const WindowProps& props);
 		virtual void shutdown();

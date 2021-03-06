@@ -1,5 +1,6 @@
 #pragma once
 
+#include "memory"
 
 #ifdef NL_PLATFORM_WINDOWS
 	#ifdef NL_NEURAL_LINK
@@ -29,3 +30,13 @@
 #define BIT(x) (1 << x)
 
 #define NL_BIND_EVENT_FUNC(func) std::bind(&func, this, std::placeholders::_1)
+
+
+namespace Neural
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

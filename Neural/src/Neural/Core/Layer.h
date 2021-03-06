@@ -16,7 +16,7 @@ namespace Neural
 		virtual void onDetach();
 		virtual void onUpdate(Timestep timestep);
 		virtual void onEvent(Event& event);
-		virtual void onImGuiRender();
+		virtual void onImGuiRender(Timestep timestep);
 
 		inline const char* getName() const 
 		{ 

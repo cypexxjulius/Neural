@@ -13,6 +13,8 @@ namespace Neural
 
 		float getSeconds() const { return m_Time; }
 		float getMilliseconds() const { return m_Time * 1000.0f; }
+
+		static float getTime();
 	private:
 		float m_Time;
 	};

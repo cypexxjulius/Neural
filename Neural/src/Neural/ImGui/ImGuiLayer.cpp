@@ -101,8 +101,7 @@ namespace Neural {
 		}
 
 	}
-	void ImGuiLayer::onImGuiRender()
+	void ImGuiLayer::onImGuiRender(Timestep timestep)
 	{
-		static bool show = true;
 	}
 }

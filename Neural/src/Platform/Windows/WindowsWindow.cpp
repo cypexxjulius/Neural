@@ -5,6 +5,8 @@
 #include "Neural/Events/MouseEvent.h"
 #include "Neural/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Neural 
 {
 	static bool i_GLFWInitialized = false;
@@ -62,6 +64,9 @@ namespace Neural
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 				data.s_width = width;
 				data.s_height = height;
+				
+				glViewport(0, 0, width, height);
+				
 				
 				WindowResizeEvent event(width, height);
 				data.s_eventCallback(event);
@@ -139,8 +144,15 @@ namespace Neural
 
 		glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xPos, double yPos) 
 		{
+
+			static float xoldPos, yoldPos= 0;
+			
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			MouseMovedEvent event((float)xPos, (float)yPos);
+
+			MouseMovedEvent event((float)xPos, (float)yPos, (float)xPos - xoldPos, (float)yPos - yoldPos);
+			
+			xoldPos = (float)xPos;
+			yoldPos = (float)yPos;
 			data.s_eventCallback(event);
 		});
 	}

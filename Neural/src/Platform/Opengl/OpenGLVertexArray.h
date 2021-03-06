@@ -16,21 +16,21 @@ namespace Neural
 		virtual void bind() const override;
 		virtual void unbind() const override;
 
-		virtual void addVertexBuffer(VertexBuffer* vertexBuffer) override;
-		virtual void setIndexBuffer(IndexBuffer* indexBuffer) override;
+		virtual void addVertexBuffer(const Ref<VertexBuffer>& vertexBuffer) override;
+		virtual void setIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 		
-		virtual const std::vector<VertexBuffer*> getVertexBuffers() const override
+		virtual const std::vector<Ref<VertexBuffer>> getVertexBuffers() const override
 		{
 			return m_vertexBuffer;
 		}
-		virtual const IndexBuffer* getIndexBuffer() const override
+		virtual const Ref<IndexBuffer>& getIndexBuffer() const override
 		{
 			return m_indexBuffer;
 		}
 	private:
 		uint32_t m_rendererId;
-		std::vector<VertexBuffer*> m_vertexBuffer;
-		IndexBuffer* m_indexBuffer;
+		std::vector<Ref<VertexBuffer>> m_vertexBuffer;
+		Ref<IndexBuffer> m_indexBuffer;
 	};
 }
 

@@ -1,18 +1,20 @@
 #pragma once
 #include "Event.h"
+#include <glm/glm.hpp>
 
 namespace Neural 
 {
 	class NEURAL_API MouseMovedEvent : public Event
 	{
 	private:
-		float m_mouseX, m_mouseY;
+		glm::vec2 m_pos;
+		glm::vec2 m_delta;
 	public:
-		MouseMovedEvent(float x, float y)
-			: m_mouseX(x), m_mouseY(y) {}
+		MouseMovedEvent(float x, float y, float xdelta, float ydelta)
+			: m_pos(x, y), m_delta(xdelta, ydelta) {}
 
-		inline float getX() const { return m_mouseX; }
-		inline float getY() const { return m_mouseY; }
+		inline glm::vec2 getPosition() const { return m_pos; }
+		inline glm::vec2 getDelta() const { return m_delta; }
 		
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
